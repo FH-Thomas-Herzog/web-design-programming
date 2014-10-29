@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>About Me</title>
+</head>
+<body>
+  <h1>About Me</h1>
+  <ul>
+    <li>Nickname: <span id="nickname"></span>
+    <li>Favorites:  <span id="favorites"></span>
+    <li>Hometown: <span id="hometown"></span>
+   </ul>
+   <script type="text/javascript">
+		// Modify the span contained text
+		document.getElementById("nickname").innerText = "Thomas Herzog";
+		document.getElementById("favorites").innerText = "none";
+		document.getElementById("hometown").innerText = "hometown";
+		
+		// Modify li style class
+		var liArray = document.getElementsByTagName("li");
+		var li;
+		for (var i = 0; i < liArray.length; i++) {
+			li = liArray[i];
+			li.className = "listitem";
+			console.log(li.className);
+		}
+		
+		// Add image to h1
+		var img = document.createElement("img");
+		img.src = "https://www.google.at/images/srpr/logo11w.png";
+		document.getElementsByTagName("h1")[0].appendChild(img);
+		
+		// Add style tag for listitem style
+		var styleTag = document.createElement("style");
+		styleTag.innerText = ".listitem { color: red; }";
+		document.head.appendChild(styleTag);
+		
+		// Add todo list
+		
+		function addItem() {
+			var ulTodos = document.getElementById("todos");
+			var li = document.createElement("li");
+			var tField = document.getElementById("todoName");
+			
+			// create span for text
+			var span = document.createElement("span");
+			span.innerText = tField.value;
+			span.id = "li_span_" + (ulTodos.childElementCount + 1);
+			
+			// create li for ul
+			li.innerText = tField.value;
+			li.id = "li_" + (ulTodos.childElementCount + 1);
+			
+			// create checkbox
+			var check = document.createElement("input");
+			check.type = "checkbox";
+			check.onclick = function () {
+				if(check.checked) {
+					span.setAttribute("style", "text-decoration:line-through");
+				}else{
+					span.setAttribute("style", "");
+				}
+			}
+			
+			// create button for delete
+			var deleteButton = document.createElement("input");
+			deleteButton.type = "button";
+			deleteButton.value = "delete";
+			deleteButton.onclick = function (){
+				li.remove();
+			};
+						
+			li.appendChild(span);
+			li.appendChild(check);
+			li.appendChild(deleteButton);
+			ulTodos.appendChild(li);
+			tField.value = "";
+		}
+		
+		var textField = document.createElement("input");
+		textField.id = "todoName";
+		textField.type = "text";
+		textField.value = "";
+		
+		var button = document.createElement("input");
+		button.type = "button"
+		button.value = "add";
+		button.onclick = addItem;
+		
+		var todos = document.createElement("ul");
+		todos.id = "todos";
+		
+		document.body.appendChild(textField);
+		document.body.appendChild(button);
+		document.body.appendChild(todos);
+
+   </script>
+ </body>
+</html>

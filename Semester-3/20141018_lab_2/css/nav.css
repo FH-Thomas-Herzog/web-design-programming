@@ -1,0 +1,40 @@
+/* Basics for all of the navigation */
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav a {
+	display: block;
+	color: #000;
+}
+
+nav a:visited {
+	display: block;
+	color: #000;
+}
+
+/* Main nav styles */
+.main-nav li {
+	border-bottom: 2px solid #000;
+}
+
+.main-nav li:first-child {
+	border-top: 2px solid #000;
+}
+
+.main-nav a {
+	text-decoration: none;
+	padding: 10px;
+}
+
+.main-nav a:hover, .main-nav a:focus, .main-nav .is-active a:hover, .main-nav .is-active a:focus {
+	background-color: darkblue;
+	color: #fff;
+}
+
+.main-nav .is-active a {
+	background-color: lightblue;
+	font-weight: bold;
+}

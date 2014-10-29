@@ -1,0 +1,44 @@
+/* Specifies the layout of the html page */
+.page-header-top {
+	padding: 10px;
+	background-color: #C17736;
+	color: white;
+}
+
+.page-header-top h1 {
+	margin: 0;
+	color: #663409;
+}
+
+.page-header-image {
+	max-height: 250px;
+	overflow: overflow;
+	border-bottom: 2px solid #000;
+	background-position: center center;
+	background-size: cover;
+}
+
+.page-header-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	opacity: 0;
+}
+
+.page-contet {
+	padding: 10px;
+}
+
+.page-sidebar {
+	padding: 10px;
+	border-top: 1px solid #000;
+	background-color: #F5BE8F;
+}
+.page-footer {
+	padding: 10px;
+	background-color: #000;
+	color: #fff;
+}
+.page-footer p {
+	margin: 0;
+}

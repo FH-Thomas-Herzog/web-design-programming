@@ -1,0 +1,30 @@
+table, th, tr, td {
+	border-color: #663409;
+	border-collapse: collapse;
+}
+
+table.bier-table th, td {
+	text-align: center;
+}
+
+table.bier-table tr:nth-child(even) {
+	background: #F5BE8F;
+}
+
+table.bier-table tr:nth-child(odd) {
+	background: #F5DECB;
+}
+
+table.bier-table th {
+	font-family: Felipa;
+	background: #805F43;
+	color: #FFF;
+	padding: 10px;
+}
+
+table.bier-table td {
+	font-family: Flamenco;
+	color: #C17736;
+	padding: 7px 10px 7px 10px;
+}
+

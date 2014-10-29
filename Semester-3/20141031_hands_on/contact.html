@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link href='http://fonts.googleapis.com/css?family=Felipa' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Fondamento' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Fruktur' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Fanwood+Text' rel='stylesheet' type='text/css'>
+
+        <link href='css/base.css' rel='stylesheet' type='text/css'>
+        <link href='css/contact/layout.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <section>
+            <h2>Formular</h2>
+            <form action="#" method="post">
+                <div class="form-field">
+                    <label>
+                        <span class="form-visual-label"> Anrede : </span>
+                    </label>
+                    <select name="salutation" required>
+                        <option value="" selected>Bite wählen</option>
+                        <option value="f">weiblich</option>
+                        <option value="m">männlich</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>
+                        <span class="form-visual-label"> Name :</span>
+                    </label>
+                    <input type="text" name="Name" placeholder="Vor- und Nachname"
+                    required />
+                </div>
+                <div class="form-field">
+                    <label>
+                        <span class="form-visual-label"> Email : </span>
+                    </label>
+                    <input type="email" name="email" placeholder="name@test.com"
+                    required />
+                    </div class="form-field">
+                    <div class="form-field">
+                        <label>
+                            <span class="form-visual-label"> Nachricht : </span>
+                        </label>
+                        <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
+                    </div>
+                    <div class="form-field">
+                        <button type="submt"> Absenden </button>
+                    </div>
+            </form>
+        </section>
+
+        <aside>
+            <h3>Author</h3>
+            <p class="vcard">
+                <span class="fn"> Thomas Herzog </span>
+                <br>
+                <span class="org"> FH
+                    Hagenberg </span>
+                <br>
+                <span class="adr"> <span
+                    class="postal-code"> 4232 </span> <span class="locality"> Hagenberg </span> <span class="region"> Austria </span> </span>
+            </p>
+        </aside>
+
+        <footer>
+            <p>
+                &copy; Webdesign &amp; -prgorammierung
+            </p>
+        </footer>
+        </section>
+    </body>
+</html>
