@@ -1,0 +1,39 @@
+/* Default settings for floating text within the hmtl */
+html {
+	font-family: "Fanwood Text", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000;
+	background-color: #FEEDCB;
+}
+
+/* Default settings for the header elements */
+h1, h2, h3, h4 {
+	font-family: "Felipa", Arial, Helvetica, serif;
+	font-weight: bold;
+	color: #663409;
+}
+h1 {
+	font-size: 1.7rem;
+}
+
+h2 {
+	font-size: 1.4rem;
+}
+
+h3 {
+	font-size: 1.2rem;
+}
+
+/* default style for the link elements */
+a {
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+
+a:visited {
+	color: #FFFFFF;
+} 
+
+a:hover, a:focus {
+	text-decoration: none;
+}
