@@ -1,0 +1,18 @@
+/* form label design */
+.form-visual-label {
+	font-weight: bold;
+	font-family: "Fondamento", serif;
+	min-width: 150px;
+	font-size: 14px;
+	color: #663409;
+}
+
+.form-field label {
+	display: inline-block;
+	width: 80px;
+}
+
+.form-field button {
+	margin: 5px;
+}
+

@@ -1,0 +1,35 @@
+input[type="text"],
+input[type="email"],
+textarea,
+select,
+button {
+    width: 100%;
+    padding: 7px 4px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    resize: none;
+}
+
+.form-visual-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Form drid system */
+.form-row {
+    overflow: hidden;
+    margin: 0 -10px;
+}
+
+.form-field {
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+@media(min-width: 500px) {
+    .form-field-half {
+        float: left;
+        width: 50%;
+    }
+
+}
