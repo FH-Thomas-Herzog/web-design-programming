@@ -1,0 +1,6 @@
+table.bier-table td,
+table.bier-table th {
+    font-family: Arial, Helvetica, serif;
+    color: #000;
+    padding: 7px 10px 7px 10px;
+}

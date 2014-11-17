@@ -1,0 +1,42 @@
+@media print {
+    html {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #000;
+        background-color: #000;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: Arial, Helvetica, serif;
+        font-weight: bold;
+        color: #000;
+    }
+
+
+    .main-nav {
+        display: none;
+    }
+
+    .page-header-top {
+        background-color: #FFF;
+        color: #000;
+    }
+
+    .page-header-top h1 {
+        color: #000;
+    }
+
+    .page-header-image {
+        display: none;
+    }
+
+    .page-footer {
+        color: #000;
+    }
+
+    .page-sidebar {
+        font-family: Arial, Helvetica, serif;
+        font-weight: normal;
+        color: #000;
+    }
+}
