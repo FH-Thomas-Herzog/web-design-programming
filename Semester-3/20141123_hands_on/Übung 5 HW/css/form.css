@@ -1,0 +1,38 @@
+/* Form CSS */
+/* s1310307040 */
+
+input[type="text"],
+input[type="email"],
+textarea,
+select,
+form button {
+	width: 60%;
+	padding: 5px;
+	border: 1px solid #164155;
+	border-radius: 5px;	
+}
+
+.form-field {
+	margin: 10px 0;
+}
+
+.form-visual-label {
+	display:block;
+	margin-bottom: 5px;
+}
+
+@media(min-width:500px) {
+	.form-row {
+		overflow:hidden;
+		margin: 0 -5px;
+	}
+	.form-field {
+		float: left;
+		width: 50%;
+		/*padding: 0 5px;*/
+	}
+}
+
+.form-field-full {
+	width: 100%;
+}

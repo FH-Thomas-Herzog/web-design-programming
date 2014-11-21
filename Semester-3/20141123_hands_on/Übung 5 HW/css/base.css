@@ -1,0 +1,44 @@
+/* Base Styles */
+/* s1310307040 */
+
+html {
+	font-size: 14px;
+	/*font-family: Arial, Helvetica, sans-serif;*/
+	font-family: 'News Cycle', sans-serif;
+	color: #303030
+}
+
+h2, h3, h4 {
+	/*font-family: "Palatino Linotype", "Times New Roman", serif;*/
+	font-family: 'News Cycle', sans-serif;
+	font-weight: bold;
+	color: #004E74 
+}
+
+h1 {
+	font-size: 1.7rem;
+		color: #fff 
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.3rem;
+}
+
+a {
+	color: darkgreen;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: lightgreen;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
+}
+

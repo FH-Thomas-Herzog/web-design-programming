@@ -10,14 +10,42 @@
     <link href='http://fonts.googleapis.com/css?family=Flamenco' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Fanwood+Text' rel='stylesheet' type='text/css'>
 
-    <link href='css/base.css' rel='stylesheet' type='text/css'>
-    <link href='css/layout.css' rel='stylesheet' type='text/css'>
-    <link href='css/info/layout.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/print.css">
+    <link rel="stylesheet" href='css/info/layout.css'>
     <link rel="stylesheet" href="css/info/print.css">
 </head>
 
 <body>
+
+<header class="page-header">
+    <div class="page-header-top">
+        <h1>Hallo süße Welt</h1>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li class="is-active">
+                <a href="index.html">Startseite</a>
+            </li>
+            <li class="is-active">
+                <a href="infos.html">Infos</a>
+            </li>
+            <li class="is-active">
+                <a href="news.html">News</a>
+            </li>
+            <li class="is-active">
+                <a href="contact.html">Kontact</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="page-header-image" style="background-image: url(images/landscape_mountains.jpg)">
+        <img src="images/landscape_mountains.jpg" alt="Berglandschaft"/>
+    </div>
+</header>
+
 <div class="page-main-area">
     <section class="page-content">
         <table border="1" class="bier-table">
@@ -69,10 +97,12 @@
 
 <footer class="page-footer">
     <p>
-        &copy; Webdesign &amp; -prgorammierung
+        &copy; Webdesign &amp; -prgorammierung &amp;
     </p>
-    <a id="print" class="print-link" href="#" onclick="window.print();return false;"/>
-    <a id="email" class="email-link" href="#" onclick="mailto:test@test.at"/>
+
+    <div class=".link-container">
+        <a id="print" class="print-link" href="#" onclick="window.print();return false;"></a>
+        <a id="email" class="email-link" href="mailto:test@test.at"></a></div>
 </footer>
 </body>
 </html>

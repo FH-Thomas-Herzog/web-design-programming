@@ -1,50 +1,31 @@
 table, th, tr, td {
-	border-color: #663409;
-	border-collapse: collapse;
+    border-color: #663409;
+    border-collapse: collapse;
 }
 
 table.bier-table th, td {
-	text-align: center;
+    text-align: center;
 }
 
 table.bier-table tr:nth-child(even) {
-	background: #F5BE8F;
+    background: #F5BE8F;
 }
 
 table.bier-table tr:nth-child(odd) {
-	background: #F5DECB;
+    background: #F5DECB;
 }
 
 table.bier-table th {
-	font-family: Felipa;
-	background: #805F43;
-	color: #FFF;
-	padding: 10px;
+    font-family: Felipa;
+    background: #805F43;
+    color: #FFF;
+    padding: 10px;
 }
 
 table.bier-table td {
-	font-family: Flamenco;
-	color: #C17736;
-	padding: 7px 10px 7px 10px;
+    font-family: Flamenco;
+    color: #C17736;
+    padding: 7px 10px 7px 10px;
 }
 
-@media (min-width: 600px) {
-
-	.page-main-area {
-		display: -webkit-flex;
-		display: flex;
-		background-image: linear-gradient(to right, #FEEDCB 0%, #FEEDCB 80%, #F5BE8F 80%, #F5BE8F 100%);
-	}
-
-	.page-content {
-		-webkit-felx: 4;
-		flex: 4;
-	}
-
-	.page-sidebar {
-		-webkit-felx: 1;
-		flex: 1;
-		border-top: 0;
-	}
-}
 

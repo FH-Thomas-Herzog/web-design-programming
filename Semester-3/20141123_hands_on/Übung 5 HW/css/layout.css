@@ -1,0 +1,117 @@
+/* Layout CSS */
+/* s1310307040 */
+
+.page-header-top {
+	padding: 10px;
+	background-color: #004E74;
+	color: #fff;
+}
+
+.page-header-top h1 {
+	margin: 0;
+}
+
+.page-header-image {
+	border-bottom: 1px solid #303030;
+	max-height: 250px;
+	overflow: hidden;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.page-header-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	opacity: 0;
+}
+
+.page-content {
+	padding: 10px;
+}
+
+.page-content a:visited {
+	color: lightgray;
+}
+
+.page-sidebar {
+	padding: 10px;
+	border-top: 1px solid #46A4D2;
+	background-color: #7eb6d1;
+}
+
+
+.page-footer {
+	padding: 10px;
+	background-color: #004E74;
+	color: #fff;
+}
+
+.page-footer p {
+	margin: 0;
+}
+
+.sprite .mail {
+	background-image: url("../img/spritesheet_full.gif");
+	background-repeat: no-repeat;
+	width: 32px;
+	height: 32px;
+	background-position: 0 0;
+	text-indent: -100%;
+	float:right;
+}
+
+.mail {
+	background-position: 0px 0px
+}
+
+.mail:hover{
+	background-position: 0 -32px;
+}
+
+.sprite .printer {
+	background-image: url("../img/spritesheet_full.png");
+	background-repeat: no-repeat;
+	width: 32px;
+	height: 32px;
+	text-indent: -100%;
+	float:right;
+	background-position: 0 -63px;
+}
+
+.printer:hover {
+	background-position: 0 -95px;
+}
+
+.teaser {
+	float:left;
+	width: 450px;
+	border: 5px solid #fff;
+}
+
+.teaser img {
+	float:left;
+	width:150px;
+	height:130px;
+}
+
+@media (min-width: 600px) {
+	.page-main-area {
+		display:-webkit-flex;
+		display:flex;
+	}
+	.page-content {
+		-webkit-flex:1;
+		flex: 1;
+	}
+
+	.page-sidebar {
+		vertical-align: bottom;
+	}
+
+	.page-footer {
+		display:-webkit-flex;
+		display:flex;
+	}
+}
