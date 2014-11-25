@@ -1,0 +1,22 @@
+#content-container {
+    width: 700px;
+    height: 700px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid;
+    border-radius: 1%;
+    padding: 10px;
+    display: inline-block;
+}
+
+.message-content {
+    margin: 2px;
+}
+
+.message-label {
+    font-weight: bold;
+}
+
+.read {
+    color: red;
+}

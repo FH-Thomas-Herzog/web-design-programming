@@ -1,0 +1,98 @@
+.page-header-top {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+}
+.page-header-top h1 {
+    margin: 0;
+    color: #fff;
+}
+
+.page-header-image {
+    max-height: 250px;
+    border-bottom: 2px solid #000;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.page-header-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+}
+
+.page-content {
+    padding: 10px;
+}
+
+.page-sidebar {
+    padding: 10px;
+    border-top: 2px solid #000;
+    background-color: lightblue;
+}
+/*
+@media (min-width: 600px) {
+    
+    .page-main-area {
+        overflow: hidden; /* erzeugt bfc
+        /*
+        background-image: linear-gradient(to right, #fff 0%, #fff 80%, lightblue 80%, lightblue 100%);
+        
+    }
+    
+    .page-content {
+        float: left;
+        width: 80%;
+        padding-bottom: 999999px;
+        margin-bottom: -999989px;
+    }
+    
+    .page-sidebar {
+        float: right;
+        width: 20%;
+        border-top: 0;
+        padding-bottom: 999999px;
+        margin-bottom: -999989px;
+    }
+    
+}
+*/
+
+@media (min-width: 600px) {
+    
+    .page-main-area {
+        display: -webkit-flex;
+        display: flex;
+    }
+    
+    .page-content {
+        -webkit-flex: 1;
+        flex: 1;
+    }
+    
+    .page-sidebar {
+        width: 160px;
+        border-top: 0;
+    }
+    
+}
+
+
+
+.page-footer {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+}
+.page-footer p {
+    margin: 0;
+}
+
+
+
+
+
+
+

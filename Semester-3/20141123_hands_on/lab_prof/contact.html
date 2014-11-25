@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Kontakt - UE1 WDP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/form.css">
+    </head>
+    <body>
+        <header class="page-header">
+            <div class="page-header-top">
+                <h1>Hallo süße Welt!</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">Startseite</a>
+                    </li>
+                    <li>
+                        <a href="infos.html">Informationen</a>
+                    </li>
+                    <li class="is-active">
+                        <a href="contact.html">Kontakt</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="page-header-image" style="background-image: url(img/header.jpg);">
+                <img src="img/header.jpg" alt="Landschaft">
+            </div>
+        </header>
+
+            <div class="page-main-area">
+            <section class="page-content">
+                <h2>Formular</h2>
+    
+                <form action="#" method="post">
+                    
+                    <div class="form-row">
+                        <div class="form-field form-field-half">
+                            <label>
+                                <span class="form-visual-label">Anrede:</span>
+                                <select name="salutation" required>
+                                    <option value="" selected>&nbsp;</option>
+                                    <option value="f">Frau</option>
+                                    <option value="m">Herr</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-field form-field-half">
+                            <label>
+                                <span class="form-visual-label">Name:</span>
+                                <input type="text" name="name" placeholder="Vor- und Nachname" required>
+                            </label>
+                        </div>
+                        <div class="form-field form-field-half">
+                            <label>
+                                <span class="form-visual-label">E-Mailadresse:</span>
+                                <input type="email" name="email" placeholder="test@test.com" required>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>
+                                <span class="form-visual-label">Nachricht:</span>
+                                <textarea name="message" placeholder="Schreiben Sie sich hier Ihren Frust von der Seele." rows="5" required></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-field">
+                            <button type="submit">Absenden</button>
+                        </div>
+                    </div>
+                    
+                </form>
+    
+            </section>
+    
+            <aside class="page-sidebar">
+                <h3>Autor</h3>
+    
+                <p class="vcard">
+                    <span class="fn">David Rerych</span>
+                    <br>
+                    <span class="org">FH Hagenberg</span>
+                    <br>
+                    <a class="email" href="mailto:test@test.com">test@test.com</a>
+                    <br>
+                    <span class="adr">
+                        <span class="street-address"> Softwarepark 1 </span>
+                        <br>
+                        <span class="postal-code">4232</span> <span class="locality">Hagenberg</span>
+                    </span>
+                </p>
+            </aside>
+        </div>
+        
+        <footer class="page-footer">
+            <p>
+                &copy; Webdesign &amp; -programmierung
+            </p>
+        </footer>
+
+    </body>
+</html>

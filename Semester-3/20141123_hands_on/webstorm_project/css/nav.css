@@ -40,31 +40,6 @@ nav a:visited {
     font-weight: bold;
 }
 
-/* responsive design
-@media (min-width: 350px) {
-
-    .main-nav ul {
-        overflow: hidden;
-    }
-
-    .main-nav li {
-        width: 33.3333333%;
-        float: left;
-        border-bottom: 0;
-        border-left: 2px solid #000;
-        text-align: center;
-    }
-
-    .main-nav li:last-child {
-        border-right: 2px solid #000;
-    }
-
-    .main-nav li:first-child {
-        border-top: 0;
-    }
-}
-*/
-
 /* via flex container */
 @media (min-width: 450px) {
 

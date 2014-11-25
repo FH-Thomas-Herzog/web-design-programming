@@ -1,0 +1,99 @@
+/* Basic Nav Styles */
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav a {
+    display: block;
+    color: #000;
+}
+nav a:visited {
+    color: #000;
+}
+
+
+
+/* Main Nav */
+
+.main-nav li {
+    border-bottom: 2px solid #000;
+}
+.main-nav li:first-child {
+    border-top: 2px solid #000;
+}
+.main-nav a {
+    padding: 10px;
+    text-decoration: none;
+}
+.main-nav a:hover,
+.main-nav a:focus,
+.main-nav .is-active a:hover,
+.main-nav .is-active a:focus {
+    background-color: darkblue;
+    color: #fff;
+}
+.main-nav .is-active a {
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+
+
+/*
+@media (min-width: 350px) {
+    .main-nav ul {
+        overflow: hidden;
+    }
+    
+    .main-nav li {
+        float: left;
+        width: 33.333333%;
+        border-bottom: 0;
+        border-left: 2px solid #000;
+        text-align: center;
+    }
+    .main-nav li:first-child {
+        border-top: 0;
+        border-left: 0;
+    }
+    
+}
+*/
+
+@media (min-width: 450px) {
+    .main-nav ul {
+        display: -webkit-flex;
+        display: flex;
+    }
+    
+    .main-nav li {
+        -webkit-flex: 1;
+        flex: 1;
+        border-bottom: 0;
+        border-left: 2px solid #000;
+        text-align: center;
+    }
+    .main-nav li:first-child {
+        border-top: 0;
+        border-left: 0;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,7 +12,7 @@
 
 .page-header-image {
     max-height: 250px;
-    overflow: overflow;
+    overflow: hidden;
     border-bottom: 2px solid #000;
     background-position: center center;
     background-size: cover;
@@ -93,31 +93,6 @@ a.email-link:active {
     background-position: -32px -32px;
 }
 
-/*
-@media (min-width: 600px) {
-
-    .page-main-area {
-        overflow: hidden;
-        background-image: linear-gradient(to right, #FFF 0%, #FFF 80%, #F5BE8F 80%, #F5BE8F 100%);
-    }
-
-    .page-content {
-        float: left;
-        width: 80%;
-        padding-bottom: 999999px;
-        margin-bottom: -999999px;
-    }
-
-    .page-sidebar {
-        float: right;
-        width: 20%;
-        border-top: 0;
-        padding-bottom: 999999px;
-        margin-bottom: -999999px;
-    }
-}
-*/
-
 .page-content .teaserbox {
     border: 1px solid #000;
     border-radius: 4px;
@@ -139,7 +114,7 @@ a.email-link:active {
 }
 
 /* with flex  box */
-@media (min-width: 600px) {
+@media (min-width: 300px) {
 
     .page-main-area {
         display: -webkit-flex;
