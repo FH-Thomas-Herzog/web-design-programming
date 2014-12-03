@@ -1,8 +1,6 @@
 /**
  * Created by cchet on 11/26/2014.
  */
-
-
 /* -------------------- Template section --------------------------- */
 var ShapeObject = function () {
     this.x = 0;
@@ -23,7 +21,6 @@ var ShapeObject = function () {
 var GameShape = function (move) {
     this.move = move;
     this.selected = false;
-    this.xDiff = 0;
 
     this.isSelected = function (mousePos) {
         return ((mousePos.x >= this.x) && (mousePos.x <= (this.x + this.w))) && ((mousePos.y >= this.y) && (mousePos.y <= (this.y + this.h)))
@@ -31,18 +28,28 @@ var GameShape = function (move) {
 
     this.setMouseRelatedPos = function (mousePos) {
         if (this.selected) {
-            this.x = mousePos.x - this.xDiff;
+            this.x = mousePos.x;
+            this.y = (mousePos.y >= this.y) ? mousePos.y : this.y;
         } else {
             console.log("Element not selected !!!");
         }
     };
-
-    this.setInitalDiff = function (mousePos) {
-        this.xDiff = this.x + (mousePos.x - this.x);
-    };
-
 };
 GameShape.prototype = new ShapeObject();
+
+
+var GamePlay = function GamePlayObject() {
+    this.duration = 0;
+    this.points = 0;
+
+    this.durationCounter = function () {
+        counter++;
+    }
+
+    this.increasePoints = function () {
+        this.points++;
+    }
+}
 
 var GamingController = function GamingControllerObject() {
     /* -------------------- Private members -------------------- */
@@ -70,9 +77,10 @@ var GamingController = function GamingControllerObject() {
          */
         elementCount = 0,
         /**
-         * The positive hits of the game
+         * The count of played games
+         * @type {number}
          */
-        points,
+        playCount = 0,
         /**
          * The available color for the game elements
          * @type {string[]}
@@ -88,6 +96,10 @@ var GamingController = function GamingControllerObject() {
          * @type {Array}
          */
         plays = [],
+        /**
+         * The current played game
+         */
+        currentGame,
         /**
          * Boolean which indicates a running game
          * @type {boolean}
@@ -169,16 +181,18 @@ var GamingController = function GamingControllerObject() {
         },
         start = function () {
             elements = [];
-            points = 0;
             elementCount = 0;
+            currentGame = new GamePlay();
+            playCount++;
             running = true;
             canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
             setMoveItemEvents();
             initBoxes();
         },
         stop = function () {
+            plays[playCount] = currentGame;
+            clearGame();
             running = false;
-            points = 0;
             canvas.removeEventListener("mousedown", handleMouseDown, false);
             removeMoveItemEvents();
             /* TODO: Save game */
@@ -199,64 +213,72 @@ var GamingController = function GamingControllerObject() {
 
                 for (var j = boxes.length - 1; j >= 0; j--) {
                     var box = boxes[j];
-                    /* if (hitTest(element, box)) {
-                     return {
-                     element: element,
-                     box: box
-                     };
-                     }*/
+                    if (hitTest(element, box)) {
+                        return {
+                            element: element,
+                            box: box
+                        };
+                    }
                 }
             }
 
             return null;
-        },
-        handleHit = function (element, box) {
-            if (element.c === box.c) {
-                points++;
-                removeElement(element);
-                return true;
-            } else {
-                /*running = false;
-                 /* Draw error on canvas */
-                drawError();
-                /* Modify button text */
-                $("#" + startButtonId).html("Restart");
-                return false;
-
-                /* TODO: Keep game status */
-            }
-        },
+        }
+        ,
+        clearGame = function () {
+            elements = [];
+            shapes = [];
+            elementCount = 0;
+        }
+        ,
         draw = function () {
             canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
             canvasCtx.fillStyle = '#000';
             canvasCtx.font = 'bold 15px Verdana';
-            canvasCtx.fillText("Points: " + points, 5, 15);
+            canvasCtx.fillText("Points: " + currentGame.points, 5, 15);
             for (var i = 0; i < shapes.length; i++) {
                 var shape = shapes[i];
                 canvasCtx.fillStyle = shape.c;
                 canvasCtx.fillRect(shape.x, shape.y, shape.w, shape.h);
             }
-        },
+        }
+        ,
         drawError = function () {
             canvasCtx.fillStyle = '#000';
             canvasCtx.font = 'bold 15px Verdana';
             canvasCtx.fillText("You are dead", (canvas.width / 2), (canvas.height / 2));
-        },
+        }
+        ,
         hitTest = function (a, b) {
             return (a.x < (b.x + b.w)) && ((a.x + a.w) > b.x) && (a.y < (b.y + b.h)) && ((a.y + a.h) > b.y);
         }
         ,
     /* -------------------- Event handler section --------------------------- */
+        handleHit = function (element, box) {
+            if (element.c === box.c) {
+                currentGame.increasePoints();
+                removeElement(element);
+                return true;
+            } else {
+                removeMoveItemEvents();
+                /* Draw error on canvas */
+                drawError();
+                gameSwitch();
+                return false;
+                /* TODO: Keep game status */
+            }
+        }
+        ,
         setMoveItemEvents = function () {
-            canvas.onmousedown = handleMouseDown;
-            canvas.onmouseup = handleMouseUp;
-            canvas.onmousemove = handleMouseMove;
+            $(canvas).mousedown(handleMouseDown);
+            $(canvas).mousemove(handleMouseMove);
+            $(canvas).mouseup(handleMouseUp);
+            $(canvas).on('touchstart', handleMouseDown);
+            $(canvas).on('touchmove', handleMouseMove);
+            $(canvas).on('touchend', handleMouseUp);
         }
         ,
         removeMoveItemEvents = function () {
-            canvas.onmousedown = null;
-            canvas.onmouseup = null;
-            canvas.onmousemove = null;
         }
         ,
         handleMouseDown = function (evt) {
@@ -264,7 +286,6 @@ var GamingController = function GamingControllerObject() {
             var idx = getClickedElementIdx(mousePtr);
             if (idx >= 0) {
                 var element = elements[idx];
-                element.setInitalDiff(mousePtr);
                 element.move = false;
                 element.selected = true;
             }
@@ -279,7 +300,6 @@ var GamingController = function GamingControllerObject() {
         }
         ,
         handleMouseMove = function (evt) {
-            console.log("mouse moved");
             var mousePtr = getCanvasMousePosition(evt);
             var idx = getSelectedElementIdx(mousePtr);
             if (idx >= 0) {
@@ -290,18 +310,28 @@ var GamingController = function GamingControllerObject() {
     /* -------------------- Utility function section --------------------------- */
         getClickedElementIdx = function (mousePtr) {
             var i = 0;
-            while ((i < (elements.length - 1)) && (!elements[i].isSelected(mousePtr))) {
-                i++;
+            if (elements.length > 0) {
+                while ((i < (elements.length - 1)) && (!elements[i].isSelected(mousePtr))) {
+                    i++;
+                }
+                i = (i == (elements.length - 1)) ? -1 : i;
+            } else {
+                i = -1;
             }
-            return (i == (elements.length - 1)) ? -1 : i;
+            return i;
         }
         ,
         getSelectedElementIdx = function () {
             var i = 0;
-            while ((i < (elements.length - 1)) && (!elements[i].selected)) {
-                i++;
+            if (elements.length > 0) {
+                while ((elements.length != 0) && (i < (elements.length - 1)) && (!elements[i].selected)) {
+                    i++;
+                }
+                i = (i == (elements.length - 1)) ? -1 : i;
+            } else {
+                i = -1;
             }
-            return (i == (elements.length - 1)) ? -1 : i;
+            return i;
         }
         ,
         getCanvasMousePosition = function (evt) {
@@ -346,6 +376,3 @@ var GamingController = function GamingControllerObject() {
     };
 }
 
-var GamePlayTemplate = function GamePlayObject(startTime, endTime, points) {
-
-}
