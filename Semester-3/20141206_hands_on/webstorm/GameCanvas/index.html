@@ -5,16 +5,30 @@
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; user-scalable=0;"/>
     <title>Quicksort</title>
     <script src="jquery-2.1.1.min.js"></script>
-    <script src="code.js"></script>
     <script src="controller.js"></script>
+    <link href="game.css" rel="stylesheet">
 </head>
 <body>
 <div id="game-container">
     <div id="game-controller-container">
         <button id="start">undefined</button>
+        <button id="reset">undefined</button>
     </div>
-    <div id="game-area-container" style="z-index: -999">
-        <canvas id="gamescreen" width="300" height="450" style="border: 1px solid black;"/>
+    <div id="game-area-container">
+        <canvas id="gamescreen" width="300" height="450" style="border: 1px solid black;"></canvas>
+    </div>
+    <div id="result-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Duration</th>
+                <th>Points</th>
+                <th>Goody count</th>
+                <th>Life count</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 </div>
 </body>

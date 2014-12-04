@@ -1,0 +1,49 @@
+#game-container {
+    width: 900px;
+    /* border: 2px solid; */
+    overflow: auto;
+}
+
+body div div {
+    padding: 5px;
+    /* border: 1px solid; */
+}
+
+#game-area-container {
+    width: 320px;
+    float: left;
+}
+
+#result-container {
+    width: 400px;
+    height: 450px;
+    overflow-y: auto;
+    float: left;
+}
+
+#result-container table {
+    width: 100%;
+    border: 2px solid;
+    border-collapse: collapse;
+}
+
+#result-container th, td {
+    padding: 2px;
+    border: 1px solid;
+    text-align: center;
+}
+
+#result-container tr {
+    border-bottom: 1px solid;
+}
+
+#result-container thead {
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+    border-bottom: 2px solid;
+    background-color: bisque;
+}
+
+#result-container table tbody tr:nth-child(odd) {
+    background-color: antiquewhite;
+}
