@@ -1,4 +1,67 @@
+.error-container {
+    padding: 0px 0px 5px 0px;
+}
+
+.search-container {
+    padding: 0px 0px 10px 0px;
+    min-width: 700px;
+}
+
+.search-container input {
+    width: 300px;
+}
+
+.search-container button {
+    margin-left: 5px;
+}
+
 .google-map {
     height: 200px;
     width: 200px;
+}
+
+.selectable-image {
+    border: 1px solid red;
+}
+
+.result-container img {
+    width: 200px;
+    height: 200px;
+    margin-top: 5px;
+}
+
+.result-container div {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.result-container input {
+    width: 145px;
+}
+
+.result-container button {
+    width: 48px;
+    margin-left: 5px;
+}
+
+.result-container table {
+    min-width: 700px;
+    width: 100%;
+    border: 2px solid;
+    border-collapse: collapse;
+}
+
+.result-container th, td {
+    padding: 2px;
+    border: 1px solid;
+    text-align: center;
+}
+
+.result-container th {
+    font-size: larger;
+    background-color: antiquewhite;
+}
+
+.result-container tr {
+    border-bottom: 1px solid;
 }

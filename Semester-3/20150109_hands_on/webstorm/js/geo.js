@@ -3,16 +3,19 @@
  * This script files contains the whole javascript used by this application
  */
 
+/* globally used instances */
+var
+    geoHandler = null;
+
 /**
  * Initializes the application
  */
 $(function () {
-    geoHandler = new GeoHandler(new ErrorHandler());
-    geoHandler.init();
+    geoHandler = new GeoHandler(new ErrorHandler()).init();
 });
 
 /**
- * Static variables covering the used ids.
+ * Static references to the used ids and css classes.
  */
 var
     RESULT_CONTAINER_ID = "resultContainer"
@@ -35,20 +38,18 @@ var
     ,
     IMAGE_WIDTH = 200
     ,
-    SELECTABLE_IMAGE_CSS = "selectableImage"
+    SELECTABLE_IMAGE_CSS = "selectable-image"
+    ,
+    NOT_SELECTABLE_IMAGE_CSS = "not-selectable-image"
     ,
     GOOGLE_MAP_CSS = "google-map";
 
-/* globally used instances */
-var
-    geoHandler = null;
-
 /**
- * This section specifies thee used JS object for geo resolving and local storage handling.
+ * This section specifies the used JS classes for geo resolving and local storage handling.
  */
 var
     /**
-     * This class specifies the coordinates structure used in the other classes
+     * This class specifies the coordinates structure used in the other classes.
      * @param address the formatted address
      * @param latitude
      * @param longitude
@@ -86,7 +87,7 @@ var
     }
     ,
     /**
-     * This class specfies the storage handler which handles the local storage access
+     * This class specifies the storage handler which handles the local storage access
      * @param errorHandler the error handler instance used by the created instance
      * @constructor (errorHandler)
      */
@@ -107,9 +108,6 @@ var
                     array = [];
                 }
                 array.push(data);
-                $.each(array, function (idx, value) {
-                    console.log(value);
-                })
                 localStorage.setItem(key, JSON.stringify(array));
             }
         }
@@ -249,7 +247,7 @@ var
              * @param data the data received by geo location
              */
             getPositionSuccessCallback = function (data) {
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
                 selectedPosition = new Coordinates(null, data.coords.latitude, data.coords.longitude);
                 resolveAddressFromCoordinates();
             }
@@ -266,45 +264,46 @@ var
              * @param data the received images from google search
              */
             displayImages = function (data) {
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
                 $(resultContainer).empty();
                 $.each(data.responseData.results, function (idx, value) {
                     /* create image for searched image */
                     var image = $("<img>");
-                    image.attr("src", value.unescapedUrl).attr("width", IMAGE_WIDTH);
+                    image.attr("src", value.unescapedUrl);
 
                     /* Allow just the first four images to be selected */
                     if (idx < 4) {
-                        image.attr("css", SELECTABLE_IMAGE_CSS).click(function (event) {
+                        image.attr("class", SELECTABLE_IMAGE_CSS).attr("alt", "image found on google").attr("title", "Click to save me").click(function (event) {
                             /* clear formerly selected image */
                             $(resultContainer).find("input:text").remove();
                             $(resultContainer).find("button").remove();
+                            $(resultContainer).find("br").remove();
 
                             /* create comment field */
-                            var commentText = $("<input id='selectedComment'>");
-                            commentText.attr("id", COMMENT_TEXT_FIELD_ID);
+                            var commentText = $("<input id='selectedComment'>").attr("id", COMMENT_TEXT_FIELD_ID);
+
+                            /* append comment and button in surrounding image div */
+                            var selectedImage = $(this);
+                            var lBreak = $("<br>");
 
                             /* create button for store */
-                            var button = $("<button>");
-                            button.text("Store");
-                            button.attr("id", STORE_BUTTON_ID);
-                            button.click(function (event) {
+                            var button = $("<button>").text("Store").attr("id", STORE_BUTTON_ID).click(function (event) {
                                 storageHandler.append(STORE_KEY, {
                                     comment: commentText.val(),
                                     url: selectedImage.attr("src"),
                                     position: selectedPosition
                                 });
+                                commentText.remove();
+                                button.remove();
+                                lBreak.remove();
                             });
 
-                            /* append comment and button in surrounding image div */
-                            var selectedImage = $(this);
-                            selectedImage.parent().prepend(button);
-                            selectedImage.parent().prepend(commentText);
+                            selectedImage.parent().prepend(lBreak).prepend(button).prepend(commentText);
                         });
                     }
                     /* Clear comment and store button if unselectable image gets clicked */
                     else {
-                        image.attr("css", SELECTABLE_IMAGE_CSS).click(function (event) {
+                        image.attr("class", NOT_SELECTABLE_IMAGE_CSS).click(function (event) {
                             /* clear formerly selected image */
                             $(resultContainer).find("input:text").remove();
                             $(resultContainer).find("button").remove();
@@ -312,9 +311,9 @@ var
                     }
 
                     /* append image in surrounding div in result container */
-                    var div = $("<div>");
-                    div.append(image);
-                    $(resultContainer).append(div);
+                    $(resultContainer).append(
+                        $("<div>").append(image)
+                    );
                 })
             }
             ,
@@ -322,8 +321,8 @@ var
              * Handles the place selected event
              */
             placesChangedListener = function () {
-                if (googleSearchBox.getPlaces() != null) {
-                    console.log(googleSearchBox.getPlaces()[0]);
+                if ((googleSearchBox.getPlaces() != null) && (googleSearchBox.getPlaces().length > 0)) {
+                    //console.log(googleSearchBox.getPlaces()[0]);
                     selectedPosition = new Coordinates(googleSearchBox.getPlaces()[0].formatted_address, null, null);
                     resolveCoordinatesFromAddress();
                 } else {
@@ -336,7 +335,7 @@ var
              * @param coordinates the coordinates to search images for
              */
             searchImagesForLocation = function () {
-                console.log("searchImagesForLocation called " + JSON.stringify(selectedPosition));
+                //console.log("searchImagesForLocation called " + JSON.stringify(selectedPosition));
                 $.ajax({
                     url: GOOGLE_IMAGE_SEARCH_URL + "?v=1.0&q=" + selectedPosition.address.split(' ').join('+'),
                     dataType: 'jsonp',
@@ -399,6 +398,9 @@ var
                 }
             };
 
+        /**
+         * This function inits the geo handler.
+         */
         this.init = function () {
             /* get all html components */
             errorContainer = document.getElementById(ERROR_CONTAINER_ID);
