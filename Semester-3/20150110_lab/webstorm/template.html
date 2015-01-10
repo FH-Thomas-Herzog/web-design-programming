@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>template</title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+    <style>
+        .widget {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border: 2px solid black;
+            margin-right: 10px;
+            float: left;
+            background: lightgray;
+            user-select: none; /* disable text selection by user */
+        }
+
+        .widget img {
+            width: 100%;
+        }
+
+        .widget span {
+            width: 150px;
+            line-height: 150px;
+            text-align: center;
+            display: block;
+        }
+
+        .widget.dragging {
+            border-color: red;
+        }
+
+        .widget.over {
+            border-style: dashed;
+        }
+
+        /* solves problem with bubbeling where the event cause a flickering effect on the entered elements */
+        .widget * {
+            pointer-events: none;
+        }
+    </style>
+
+    <script>
+        window.onload = init;
+        var oldContent;
+
+        function init() {
+            var draggables = document.querySelectorAll(".widget[draggable=true]");
+            for (var i = 0; i < draggables.length; i++) {
+                bindEvents(draggables[i]);
+            }
+        }
+
+        /* Firefox needs this event added */
+        function bindEvents(draggable) {
+            /* source */
+            draggable.addEventListener("dragstart", handleDragStart);
+            /* all if over  */
+            draggable.addEventListener("dragover", handleDragOver);
+            /* target */
+            draggable.addEventListener("drop", handleDrop);
+            /* source */
+            draggable.addEventListener("dragend", handleDragEnd);
+            /* over elements */
+            draggable.addEventListener("dragenter", handleDragEnter);
+            /* over elements */
+            draggable.addEventListener("dragleave", handleDragLeave);
+        }
+
+        function handleDragStart(evt) {
+            evt.dataTransfer.effectAllowed = "move";
+            /** text/plain would standard and works on new browser but IE needs text only,
+             * so use text if portability is needed.
+             *
+             * Here the data is set for the dragging
+             */
+            evt.dataTransfer.setData("text", this.innerHTML);
+
+            this.classList.add("dragging");
+        }
+
+        function handleDragOver(evt) {
+            /* prevents the default browser action */
+            evt.preventDefault();
+        }
+
+        function handleDrop(evt) {
+            /* prevents the default browser action */
+            evt.preventDefault();
+
+            /* get the content of the data transfer */
+            var newContent = evt.dataTransfer.getData("text");
+            var files = evt.dataTransfer.files;
+
+            /* set new content if present */
+            if (newContent) {
+                oldContent = this.innerHTML;
+                this.innerHTML = newContent;
+            }
+
+            if (files.length == 1) {
+                handleFile(files[0], this);
+            } else if (files.length > 1) {
+                alert("To many files dropped");
+            }
+            this.classList.remove("over");
+        }
+
+        function handleDragEnd(evt) {
+            evt.preventDefault();
+
+            if (evt.dataTransfer.dropEffect === "move") {
+                this.innerHTML = oldContent;
+            }
+            this.classList.remove("dragging");
+        }
+
+        function handleDragEnter(evt) {
+            this.classList.add("over");
+        }
+
+        function handleDragLeave(evt) {
+            this.classList.remove("over");
+        }
+
+        function handleFile(file, target) {
+            if (file.type.match(/image/)) {
+                var reader = new FileReader();
+                reader.onload = function (evt) {
+
+                }
+            } else {
+                alert("not a image");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="widget" draggable="true">
+    <img src="http://beerhold.it/300/300" draggable="false">
+</div>
+<div class="widget" draggable="true">
+    <span> Leer</span>
+</div>
+<div class="widget" draggable="true">
+    <span> Leer</span>
+</div>
+</body>
+</html>
+
