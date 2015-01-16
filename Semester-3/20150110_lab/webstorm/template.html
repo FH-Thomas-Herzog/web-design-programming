@@ -130,8 +130,10 @@
             if (file.type.match(/image/)) {
                 var reader = new FileReader();
                 reader.onload = function (evt) {
+                    target.innerHTML = '<img draggable="false" alt="not available" src="' + evt.target.result + '"/>';
+                };
 
-                }
+                reader.readAsDataURL(file);
             } else {
                 alert("not a image");
             }
